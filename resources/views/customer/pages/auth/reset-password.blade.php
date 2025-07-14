@@ -15,14 +15,14 @@
 @section('main')
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade"
-        style="background-image: url({{ asset('customer/img/travel/showcase-8.webp') }});">
+        style="background-image: url({{ asset('customer/img/page_title/page_title1\.jpg') }});">
         <div class="container position-relative">
             <h1>{{ $pageTitle ?? 'BanquetHub' }}</h1>
-            <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam
-                molestias.</p>
+            <p>Forgotten your password? No problem! Just enter your registered email address below and we'll send you a
+                secure link to reset your password. Make sure to check your inbox (and spam folder) for the email.</p>
             <nav class="breadcrumbs">
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{route('customer')}}">Home</a></li>
                     <li class="current">{{ $pageTitle ?? 'BanquetHub' }}</li>
                 </ol>
             </nav>

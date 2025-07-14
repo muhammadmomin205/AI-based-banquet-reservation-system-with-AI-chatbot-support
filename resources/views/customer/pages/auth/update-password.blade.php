@@ -15,14 +15,14 @@
 @section('main')
     <!-- Page Title -->
     <div class="page-title dark-background" data-aos="fade"
-        style="background-image: url({{ asset('customer/img/travel/showcase-8.webp') }});">
+        style="background-image: url({{ asset('customer/img/page_title/page_title1\.jpg') }});">
         <div class="container position-relative">
             <h1>{{ $pageTitle ?? 'BanquetHub' }}</h1>
-            <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam
-                molestias.</p>
+            <p>You're almost there! Please enter your new password below to complete the process. Make sure your new
+                password is strong and secure to help keep your account protected.</p>
             <nav class="breadcrumbs">
                 <ol>
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="{{route('customer')}}">Home</a></li>
                     <li class="current">{{ $pageTitle ?? 'BanquetHub' }}</li>
                 </ol>
             </nav>
@@ -119,7 +119,7 @@
                         $('#preloader').hide(); // Hide preloader
                         $form[0].reset(); // Reset form
                         toastr.success(response.success);
-                        window.location.href='{{route('customer.login')}}'
+                        window.location.href = '{{ route('customer.login') }}'
                     },
                     error: function(xhr) {
                         $('#preloader').hide(); // Always hide preloader

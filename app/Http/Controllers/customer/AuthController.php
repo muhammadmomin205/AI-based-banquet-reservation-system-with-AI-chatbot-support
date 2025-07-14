@@ -57,7 +57,7 @@ class AuthController extends Controller
         $manager->save();
 
         return response()->json([
-            'success' => 'Manager registered successfully!',
+            'success' => 'Registered successfully!',
         ], 200);
     }
     public function signupCustomer(Request $request)
@@ -82,7 +82,7 @@ class AuthController extends Controller
         $customer->save();
 
         return response()->json([
-            'success' => 'Customer registered successfully!',
+            'success' => 'Registered successfully!',
         ], 200);
     }
     public function loginUser(Request $request)
@@ -96,7 +96,7 @@ class AuthController extends Controller
             $customer = Auth::guard('web')->user();
 
             return response()->json([
-                'success'    => 'Customer login successful!',
+                'success'    => 'login successful!',
                 'user_type'  => 'customer',
             ]);
         }
@@ -105,7 +105,7 @@ class AuthController extends Controller
             $manager = Auth::guard('banquet_manager')->user();
 
             return response()->json([
-                'success'    => 'Banquet manager login successful!',
+                'success'    => 'login successful!',
                 'user_type'  => 'banquet_manager',
             ]);
         }
@@ -119,7 +119,7 @@ class AuthController extends Controller
     {
         if (Auth::guard('web')->check()) {
             Auth::guard('web')->logout();
-            return response()->json(['success' => 'Customer logged out successfully']);
+            return response()->json(['success' => 'logged out successfully']);
         }
 
         return response()->json(['error' => 'No customer is currently logged in'], 403);
@@ -129,10 +129,8 @@ class AuthController extends Controller
     {
         if (Auth::guard('banquet_manager')->check()) {
             Auth::guard('banquet_manager')->logout();
-            return response()->json(['success' => 'Manager logged out successfully']);
+            return response()->json(['success' => 'logged out successfully']);
         }
-
-        return response()->json(['error' => 'No manager is currently logged in'], 403);
     }
     public function showLinkRequestForm()
     {
@@ -205,10 +203,6 @@ class AuthController extends Controller
             }
         }
 
-        if (!$matchedBroker) {
-            return response()->json(['error' => 'Email not found'], 404);
-        }
-
         $status = Password::broker($matchedBroker)->reset(
             $request->only('email', 'password', 'token'),
             function ($user, string $password) {
@@ -222,6 +216,6 @@ class AuthController extends Controller
 
         return $status === Password::PASSWORD_RESET
             ? response()->json(['success' => __($status)])
-            : response()->json(['error' => __($status)], 422);
+            : response()->json(['errors' => __($status)], 422);
     }
 }

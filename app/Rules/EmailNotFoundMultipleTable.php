@@ -17,7 +17,7 @@ class EmailNotFoundMultipleTable implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (!Customer::where('email', $value)->exists() && !BanquetManager::where('email', $value)->exists()) {
-            $fail('The :attribute is not found.');
+            $fail('This :attribute is not found.');
         }
     }
 }

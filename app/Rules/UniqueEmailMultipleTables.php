@@ -17,7 +17,7 @@ class UniqueEmailMultipleTables implements ValidationRule
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (Customer::where('email', $value)->exists() || BanquetManager::where('email', $value)->exists()) {
-            $fail('The :attribute is already taken.');
+            $fail('This :attribute is already taken.');
         }
     }
 }
