@@ -1,59 +1,65 @@
-<x-mail::message>
-{{-- Greeting --}}
-@if (! empty($greeting))
-# {{ $greeting }}
-@else
-@if ($level === 'error')
-# @lang('Whoops!')
-@else
-# @lang('Hello!')
-@endif
-@endif
+<!DOCTYPE html>
+<html>
 
-{{-- Intro Lines --}}
-@foreach ($introLines as $line)
-{{ $line }}
+<head>
+    <meta charset="UTF-8">
+    <title>{{ $greeting ?? ($level === 'error' ? 'Whoops!' : 'Hello!') }}</title>
+</head>
 
-@endforeach
+<body style="font-family: Arial, sans-serif; line-height: 1.6;">
 
-{{-- Action Button --}}
-@isset($actionText)
-<?php
-    $color = match ($level) {
-        'success', 'error' => $level,
-        default => 'primary',
-    };
-?>
-<x-mail::button :url="$actionUrl" :color="$color">
-{{ $actionText }}
-</x-mail::button>
-@endisset
+    {{-- Greeting --}}
+    <h2>
+        @if (!empty($greeting))
+            {{ $greeting }}
+        @else
+            {{ $level === 'error' ? 'Whoops!' : 'Hello!' }}
+        @endif
+    </h2>
 
-{{-- Outro Lines --}}
-@foreach ($outroLines as $line)
-{{ $line }}
+    {{-- Intro Lines --}}
+    @foreach ($introLines as $line)
+        <p>{{ $line }}</p>
+    @endforeach
 
-@endforeach
 
-{{-- Salutation --}}
-@if (! empty($salutation))
-{{ $salutation }}
-@else
-@lang('Regards,')<br>
-{{ config('app.name') }}
-@endif
+    {{-- Action Button --}}
+    @isset($actionText)
+        <p style="margin: 20px 0;">
+            <a href="{{ $actionUrl }}"
+                style="background-color: #007bff; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
+                {{ $actionText }}
+            </a>
+        </p>
+    @endisset
 
-{{-- Subcopy --}}
-@isset($actionText)
-<x-slot:subcopy>
-@lang(
-    "If you're having trouble clicking the \":actionText\" button, copy and paste the URL below\n".
-    'into your web browser:',
-    [
-        'actionText' => $actionText,
-    ]
-) <span class="break-all">[{{ $displayableActionUrl }}]({{ $actionUrl }})</span>
-</x-slot:subcopy>
-@endisset
-</x-mail::message>
+    {{-- Outro Lines --}}
+    @foreach ($outroLines as $line)
+        <p>{{ $line }}</p>
+    @endforeach
 
+    {{-- Salutation --}}
+    <p>
+        @if (!empty($salutation))
+            {{ $salutation }}
+        @else
+            Best regards,<br>
+            <strong>Team BanquetHub Hyderabad</strong>
+        @endif
+    </p>
+
+    <hr style="margin-top: 30px; border: none; border-top: 1px solid #eee;">
+
+    {{-- Subcopy --}}
+    @isset($actionText)
+        <p style="font-size: 13px; color: #888;">
+            If you're having trouble clicking the "<strong>{{ $actionText }}</strong>" button, copy and paste the URL
+            below into your web browser:<br>
+            <a href="{{ $actionUrl }}" style="color: #007bff;">{{ $displayableActionUrl }}</a>
+        </p>
+    @endisset
+
+    <p style="font-size: 12px; color: #aaa;">This is an automated email. Please do not reply.</p>
+</body>
+
+</html>
