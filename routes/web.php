@@ -26,3 +26,13 @@ Route::post('customer/send-reset-link-email', [AuthController::class, 'sendReset
 
 Route::get('customer/show-update-password-form/{token}', [AuthController::class, 'showUpdatePasswordForm'])->name('password.reset');
 Route::post('customer/update-password', [AuthController::class, 'updatePassword'])->name('customer.update-password');
+
+Route::get('customer/banquets', function () {
+    return view('customer.pages.banquet', ['pageTitle' => 'Banquets']);
+});
+Route::get('customer/banquets-details', function () {
+    return view('customer.pages.banquet-details', ['pageTitle' => 'Banquets Details']);
+});
+Route::get('customer/banquets-booking', function () {
+    return view('customer.pages.banquet-booking', ['pageTitle' => 'Banquets Booking']);
+});

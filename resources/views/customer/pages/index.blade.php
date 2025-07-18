@@ -146,7 +146,7 @@
                     </div>
                     <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
                         <div class="about-image">
-                            <img src="{{ asset('customer/img/page_title/page_title1\.jpg') }}" alt="Travel Experience"
+                            <img src="{{ asset('customer/img/page_title/page_title1.jpg') }}" alt="Travel Experience"
                                 class="img-fluid rounded-4">
                             <div class="experience-badge">
                                 <div class="experience-number">15+</div>

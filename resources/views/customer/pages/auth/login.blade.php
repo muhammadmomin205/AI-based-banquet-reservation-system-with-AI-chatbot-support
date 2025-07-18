@@ -17,7 +17,7 @@
     <div class="page-title dark-background" data-aos="fade"
         style="background-image: url({{ asset('customer/img/page_title/page_title1\.jpg') }});">
         <div class="container position-relative">
-            <h1>Login</h1>
+            <h1>{{ $pageTitle ?? 'BanquetHub' }}</h1>
             <p>Welcome back! Please enter your credentials to access your account. If you don’t have an account yet, feel
                 free to sign up and become part of our community. Forgot your password? Don’t worry—you can easily reset it
                 below</p>

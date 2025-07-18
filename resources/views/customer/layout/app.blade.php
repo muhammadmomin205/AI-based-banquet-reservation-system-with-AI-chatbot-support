@@ -47,6 +47,7 @@
     <div id="preloader"></div>
 
     <!-- Vendor JS Files -->
+    <script src="{{asset('customer/vendors/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{ asset('customer/vendors/php-email-form/validate.js') }}"></script>
     <script src="{{ asset('customer/vendors/aos/aos.js') }}"></script>
     <script src="{{ asset('customer/vendors/purecounter/purecounter_vanilla.js') }}"></script>
