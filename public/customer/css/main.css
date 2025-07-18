@@ -2724,7 +2724,7 @@ section,
 }
 
 .travel-about .cta-banner {
-  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 10%), color-mix(in srgb, var(--heading-color), transparent 10%)), url("https://bootstrapmade.com/content/demo/Tour/assets/css/js/travel/showcase-12.webp") center/cover;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--accent-color), transparent 10%), color-mix(in srgb, var(--heading-color), transparent 10%)), url("https://bootstrapmade.com/content/demo/Tour/manager/css/js/travel/showcase-12.webp") center/cover;
   border-radius: 25px;
   min-height: 400px;
   position: relative;
