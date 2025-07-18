@@ -11,22 +11,22 @@
     <meta content="Coderthemes" name="author" />
 
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{assets('manager/images/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{asset('manager/images/favicon.ico')}}">
 
     <!-- Vector Maps css -->
-    <link href="{{assets('manager/vendor/jsvectormap/jsvectormap.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{asset('manager/vendor/jsvectormap/jsvectormap.min.css')}}" rel="stylesheet" type="text/css">
 
     <!-- Theme Config Js -->
-    <script src="{{assets('manager/js/config.js')}}"></script>
+    <script src="{{asset('manager/js/config.js')}}"></script>
 
     <!-- Vendor css -->
-    <link href="{{assets('manager/css/vendor.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('manager/css/vendor.min.css')}}" rel="stylesheet" type="text/css" />
 
     <!-- App css -->
-    <link href="{{assets('manager/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
+    <link href="{{asset('manager/css/app.min.css')}}" rel="stylesheet" type="text/css" id="app-style" />
 
     <!-- Icons css -->
-    <link href="{{assets('manager/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('manager/css/icons.min.css')}}" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -40,13 +40,13 @@
             <!-- Brand Logo -->
             <a href="index.html" class="logo">
                 <span class="logo-light">
-                    <span class="logo-lg"><img src="{{assets('manager/images/logo.png')}}" alt="logo"></span>
-                    <span class="logo-sm"><img src="{{assets('manager/images/logo-sm.png')}}" alt="small logo"></span>
+                    <span class="logo-lg"><img src="{{asset('manager/images/logo.png')}}" alt="logo"></span>
+                    <span class="logo-sm"><img src="{{asset('manager/images/logo-sm.png')}}" alt="small logo"></span>
                 </span>
 
                 <span class="logo-dark">
-                    <span class="logo-lg"><img src="{{assets('manager/images/logo-dark.png')}}" alt="dark logo"></span>
-                    <span class="logo-sm"><img src="{{assets('manager/images/logo-sm.png')}}" alt="small logo"></span>
+                    <span class="logo-lg"><img src="{{asset('manager/images/logo-dark.png')}}" alt="dark logo"></span>
+                    <span class="logo-sm"><img src="{{asset('manager/images/logo-sm.png')}}" alt="small logo"></span>
                 </span>
             </a>
 
@@ -824,13 +824,13 @@
                     <!-- Brand Logo -->
                     <a href="index.html" class="logo">
                         <span class="logo-light">
-                            <span class="logo-lg"><img src="{{assets('manager/images/logo.png')}}" alt="logo"></span>
-                            <span class="logo-sm"><img src="{{assets('manager/images/logo-sm.png')}}" alt="small logo"></span>
+                            <span class="logo-lg"><img src="{{asset('manager/images/logo.png')}}" alt="logo"></span>
+                            <span class="logo-sm"><img src="{{asset('manager/images/logo-sm.png')}}" alt="small logo"></span>
                         </span>
 
                         <span class="logo-dark">
-                            <span class="logo-lg"><img src="{{assets('manager/images/logo-dark.png')}}" alt="dark logo"></span>
-                            <span class="logo-sm"><img src="{{assets('manager/images/logo-sm.png')}}" alt="small logo"></span>
+                            <span class="logo-lg"><img src="{{asset('manager/images/logo-dark.png')}}" alt="dark logo"></span>
+                            <span class="logo-sm"><img src="{{asset('manager/images/logo-sm.png')}}" alt="small logo"></span>
                         </span>
                     </a>
 
@@ -962,38 +962,38 @@
                     <div class="topbar-item">
                         <div class="dropdown">
                             <button class="topbar-link" data-bs-toggle="dropdown" data-bs-offset="0,25" type="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="{{assets('manager/images/flags/us.svg')}}" alt="user-image" class="w-100 rounded" height="18" id="selected-language-image">
+                                <img src="{{asset('manager/images/flags/us.svg')}}" alt="user-image" class="w-100 rounded" height="18" id="selected-language-image">
                             </button>
 
                             <div class="dropdown-menu dropdown-menu-end">
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="en">
-                                    <img src="{{assets('manager/images/flags/us.svg')}}" alt="user-image" class="me-1 rounded" height="18" data-translator-image> <span class="align-middle">English</span>
+                                    <img src="{{asset('manager/images/flags/us.svg')}}" alt="user-image" class="me-1 rounded" height="18" data-translator-image> <span class="align-middle">English</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item" data-translator-lang="hi">
-                                    <img src="{{assets('manager/images/flags/in.svg')}}" alt="user-image" class="me-1 rounded" height="18" data-translator-image> <span class="align-middle">Hindi</span>
+                                    <img src="{{asset('manager/images/flags/in.svg')}}" alt="user-image" class="me-1 rounded" height="18" data-translator-image> <span class="align-middle">Hindi</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
-                                    <img src="{{assets('manager/images/flags/de.svg')}}" alt="user-image" class="me-1 rounded" height="18"> <span class="align-middle">German</span>
+                                    <img src="{{asset('manager/images/flags/de.svg')}}" alt="user-image" class="me-1 rounded" height="18"> <span class="align-middle">German</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
-                                    <img src="{{assets('manager/images/flags/it.svg')}}" alt="user-image" class="me-1 rounded" height="18"> <span class="align-middle">Italian</span>
+                                    <img src="{{asset('manager/images/flags/it.svg')}}" alt="user-image" class="me-1 rounded" height="18"> <span class="align-middle">Italian</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
-                                    <img src="{{assets('manager/images/flags/es.svg')}}" alt="user-image" class="me-1 rounded" height="18"> <span class="align-middle">Spanish</span>
+                                    <img src="{{asset('manager/images/flags/es.svg')}}" alt="user-image" class="me-1 rounded" height="18"> <span class="align-middle">Spanish</span>
                                 </a>
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item">
-                                    <img src="{{assets('manager/images/flags/ru.svg')}}" alt="user-image" class="me-1 rounded" height="18"> <span class="align-middle">Russian</span>
+                                    <img src="{{asset('manager/images/flags/ru.svg')}}" alt="user-image" class="me-1 rounded" height="18"> <span class="align-middle">Russian</span>
                                 </a>
 
                             </div>
@@ -1039,7 +1039,7 @@
                                     <div class="dropdown-item notification-item py-2 text-wrap active" id="notification-1">
                                         <span class="d-flex align-items-center">
                                             <span class="me-3 position-relative flex-shrink-0">
-                                                <img src="{{assets('manager/images/users/avatar-2.jpg')}}" class="avatar-md rounded-circle" alt="" />
+                                                <img src="{{asset('manager/images/users/avatar-2.jpg')}}" class="avatar-md rounded-circle" alt="" />
                                                 <span class="position-absolute rounded-pill bg-danger notification-badge">
                                                     <i class="ti ti-message-circle"></i>
                                                     <span class="visually-hidden">unread messages</span>
@@ -1062,7 +1062,7 @@
                                     <div class="dropdown-item notification-item py-2 text-wrap" id="notification-2">
                                         <span class="d-flex align-items-center">
                                             <span class="me-3 position-relative flex-shrink-0">
-                                                <img src="{{assets('manager/images/users/avatar-4.jpg')}}" class="avatar-md rounded-circle" alt="" />
+                                                <img src="{{asset('manager/images/users/avatar-4.jpg')}}" class="avatar-md rounded-circle" alt="" />
                                                 <span class="position-absolute rounded-pill bg-info notification-badge">
                                                     <i class="ti ti-currency-dollar"></i>
                                                     <span class="visually-hidden">unread messages</span>
@@ -1106,7 +1106,7 @@
                                     <div class="dropdown-item notification-item py-2 text-wrap" id="notification-4">
                                         <span class="d-flex align-items-center">
                                             <span class="me-3 position-relative flex-shrink-0">
-                                                <img src="{{assets('manager/images/users/avatar-7.jpg')}}" class="avatar-md rounded-circle" alt="" />
+                                                <img src="{{asset('manager/images/users/avatar-7.jpg')}}" class="avatar-md rounded-circle" alt="" />
                                                 <span class="position-absolute rounded-pill bg-secondary notification-badge">
                                                     <i class="ti ti-plus"></i>
                                                     <span class="visually-hidden">unread messages</span>
@@ -1129,7 +1129,7 @@
                                     <div class="dropdown-item notification-item py-2 text-wrap" id="notification-5">
                                         <span class="d-flex align-items-center">
                                             <span class="me-3 position-relative flex-shrink-0">
-                                                <img src="{{assets('manager/images/users/avatar-10.jpg')}}" class="avatar-md rounded-circle" alt="" />
+                                                <img src="{{asset('manager/images/users/avatar-10.jpg')}}" class="avatar-md rounded-circle" alt="" />
                                                 <span class="position-absolute rounded-pill bg-danger notification-badge">
                                                     <i class="ti ti-heart-filled"></i>
                                                     <span class="visually-hidden">unread messages</span>
@@ -1175,19 +1175,19 @@
                                     <div class="row g-0">
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#">
-                                                <img src="{{assets('manager/images/brands/slack.svg')}}" alt="slack">
+                                                <img src="{{asset('manager/images/brands/slack.svg')}}" alt="slack">
                                                 <span>Slack</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#">
-                                                <img src="{{assets('manager/images/brands/gitlab.svg')}}" alt="Github">
+                                                <img src="{{asset('manager/images/brands/gitlab.svg')}}" alt="Github">
                                                 <span>Gitlab</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#">
-                                                <img src="{{assets('manager/images/brands/dribbble.svg')}}" alt="dribbble">
+                                                <img src="{{asset('manager/images/brands/dribbble.svg')}}" alt="dribbble">
                                                 <span>Dribbble</span>
                                             </a>
                                         </div>
@@ -1196,19 +1196,19 @@
                                     <div class="row g-0">
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#">
-                                                <img src="{{assets('manager/images/brands/bitbucket.svg')}}" alt="bitbucket">
+                                                <img src="{{asset('manager/images/brands/bitbucket.svg')}}" alt="bitbucket">
                                                 <span>Bitbucket</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#">
-                                                <img src="{{assets('manager/images/brands/dropbox.svg')}}" alt="dropbox">
+                                                <img src="{{asset('manager/images/brands/dropbox.svg')}}" alt="dropbox">
                                                 <span>Dropbox</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#">
-                                                <img src="{{assets('manager/images/brands/google-cloud.svg')}}" alt="G Suite">
+                                                <img src="{{asset('manager/images/brands/google-cloud.svg')}}" alt="G Suite">
                                                 <span>G Cloud</span>
                                             </a>
                                         </div>
@@ -1217,19 +1217,19 @@
                                     <div class="row g-0">
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#">
-                                                <img src="{{assets('manager/images/brands/aws.svg')}}" alt="bitbucket">
+                                                <img src="{{asset('manager/images/brands/aws.svg')}}" alt="bitbucket">
                                                 <span>AWS</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#">
-                                                <img src="{{assets('manager/images/brands/digital-ocean.svg')}}" alt="dropbox">
+                                                <img src="{{asset('manager/images/brands/digital-ocean.svg')}}" alt="dropbox">
                                                 <span>Server</span>
                                             </a>
                                         </div>
                                         <div class="col">
                                             <a class="dropdown-icon-item" href="#">
-                                                <img src="{{assets('manager/images/brands/bootstrap.svg')}}" alt="G Suite">
+                                                <img src="{{asset('manager/images/brands/bootstrap.svg')}}" alt="G Suite">
                                                 <span>Bootstrap</span>
                                             </a>
                                         </div>
@@ -1257,7 +1257,7 @@
                     <div class="topbar-item nav-user">
                         <div class="dropdown">
                             <a class="topbar-link dropdown-toggle drop-arrow-none px-2" data-bs-toggle="dropdown" data-bs-offset="0,19" type="button" aria-haspopup="false" aria-expanded="false">
-                                <img src="{{assets('manager/images/users/avatar-1.jpg')}}" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image">
+                                <img src="{{asset('manager/images/users/avatar-1.jpg')}}" width="32" class="rounded-circle me-lg-2 d-flex" alt="user-image">
                                 <span class="d-lg-flex flex-column gap-1 d-none">
                                     <h5 class="my-0">Dhanoo K.</h5>
                                     <h6 class="my-0 fw-normal">Premium</h6>
@@ -1479,10 +1479,10 @@
                                 <div class="my-2 d-flex align-items-center justify-content-between">
                                     <h2 class="fw-normal">$8,459.56</h2>
                                     <div class="">
-                                        <img src="{{assets('manager/images/cards/american-express.svg')}}" alt="user-card"
+                                        <img src="{{asset('manager/images/cards/american-express.svg')}}" alt="user-card"
                                             height="36" />
-                                        <img src="{{assets('manager/images/cards/discover-card.svg')}}" alt="user-card" height="36" />
-                                        <img src="{{assets('manager/images/cards/mastercard.svg')}}" alt="user-card" height="36" />
+                                        <img src="{{asset('manager/images/cards/discover-card.svg')}}" alt="user-card" height="36" />
+                                        <img src="{{asset('manager/images/cards/mastercard.svg')}}" alt="user-card" height="36" />
                                     </div>
                                 </div>
 
@@ -1571,10 +1571,10 @@
                                 <div class="my-2 d-flex align-items-center justify-content-between">
                                     <h2 class="fw-normal">$96.56k</h2>
                                     <div class="">
-                                        <img src="{{assets('manager/images/cards/american-express.svg')}}" alt="user-card"
+                                        <img src="{{asset('manager/images/cards/american-express.svg')}}" alt="user-card"
                                             height="36" />
-                                        <img src="{{assets('manager/images/cards/discover-card.svg')}}" alt="user-card" height="36" />
-                                        <img src="{{assets('manager/images/cards/mastercard.svg')}}" alt="user-card" height="36" />
+                                        <img src="{{asset('manager/images/cards/discover-card.svg')}}" alt="user-card" height="36" />
+                                        <img src="{{asset('manager/images/cards/mastercard.svg')}}" alt="user-card" height="36" />
                                     </div>
                                 </div>
 
@@ -1609,7 +1609,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span class="avatar-title bg-primary-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/products/logo/logo-1.svg')}}" alt=""
+                                                                <img src="{{asset('manager/images/products/logo/logo-1.svg')}}" alt=""
                                                                     height="22">
                                                             </span>
                                                         </div>
@@ -1644,7 +1644,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span class="avatar-title bg-info-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/products/logo/logo-2.svg')}}" alt=""
+                                                                <img src="{{asset('manager/images/products/logo/logo-2.svg')}}" alt=""
                                                                     height="22">
                                                             </span>
                                                         </div>
@@ -1680,7 +1680,7 @@
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span
                                                                 class="avatar-title bg-secondary-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/products/logo/logo-3.svg')}}" alt=""
+                                                                <img src="{{asset('manager/images/products/logo/logo-3.svg')}}" alt=""
                                                                     height="22">
                                                             </span>
                                                         </div>
@@ -1715,7 +1715,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span class="avatar-title bg-danger-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/products/logo/logo-4.svg')}}" alt=""
+                                                                <img src="{{asset('manager/images/products/logo/logo-4.svg')}}" alt=""
                                                                     height="22">
                                                             </span>
                                                         </div>
@@ -1750,7 +1750,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span class="avatar-title bg-success-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/products/logo/logo-5.svg')}}" alt=""
+                                                                <img src="{{asset('manager/images/products/logo/logo-5.svg')}}" alt=""
                                                                     height="22">
                                                             </span>
                                                         </div>
@@ -1847,7 +1847,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span class="avatar-title bg-primary-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/users/avatar-1.jpg')}}" alt=""
+                                                                <img src="{{asset('manager/images/users/avatar-1.jpg')}}" alt=""
                                                                     height="22" class="rounded-circle">
                                                             </span>
                                                         </div>
@@ -1893,7 +1893,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span class="avatar-title bg-info-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/users/avatar-2.jpg')}}" alt=""
+                                                                <img src="{{asset('manager/images/users/avatar-2.jpg')}}" alt=""
                                                                     height="22" class="rounded-circle">
                                                             </span>
                                                         </div>
@@ -1940,7 +1940,7 @@
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span
                                                                 class="avatar-title bg-secondary-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/users/avatar-3.jpg')}}" alt=""
+                                                                <img src="{{asset('manager/images/users/avatar-3.jpg')}}" alt=""
                                                                     height="22" class="rounded-circle">
                                                             </span>
                                                         </div>
@@ -1986,7 +1986,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span class="avatar-title bg-warning-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/users/avatar-4.jpg')}}" alt=""
+                                                                <img src="{{asset('manager/images/users/avatar-4.jpg')}}" alt=""
                                                                     height="22" class="rounded-circle">
                                                             </span>
                                                         </div>
@@ -2032,7 +2032,7 @@
                                                     <div class="d-flex align-items-center">
                                                         <div class="avatar-md flex-shrink-0 me-2">
                                                             <span class="avatar-title bg-danger-subtle rounded-circle">
-                                                                <img src="{{assets('manager/images/users/avatar-5.jpg')}}" alt=""
+                                                                <img src="{{asset('manager/images/users/avatar-5.jpg')}}" alt=""
                                                                     height="22" class="rounded-circle">
                                                             </span>
                                                         </div>
@@ -2140,7 +2140,7 @@
                                         <div class="p-3">
                                             <!-- Country Data -->
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <p class="mb-1"><img src="{{assets('manager/images/flags/us.svg')}}" alt="user-image"
+                                                <p class="mb-1"><img src="{{asset('manager/images/flags/us.svg')}}" alt="user-image"
                                                         class="me-1 rounded-circle" height="20"> <span
                                                         class="align-middle">United States</span> </p>
                                                 <div>
@@ -2163,7 +2163,7 @@
 
                                             <!-- Country Data -->
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <p class="mb-1"><img src="{{assets('manager/images/flags/in.svg')}}" alt="user-image"
+                                                <p class="mb-1"><img src="{{asset('manager/images/flags/in.svg')}}" alt="user-image"
                                                         class="me-1 rounded-circle" height="20"> <span
                                                         class="align-middle">India</span> </p>
                                                 <div>
@@ -2186,7 +2186,7 @@
 
                                             <!-- Country Data -->
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <p class="mb-1"><img src="{{assets('manager/images/flags/br.svg')}}" alt="user-image"
+                                                <p class="mb-1"><img src="{{asset('manager/images/flags/br.svg')}}" alt="user-image"
                                                         class="me-1 rounded-circle" height="20"> <span
                                                         class="align-middle">Brazil</span> </p>
                                                 <div>
@@ -2209,7 +2209,7 @@
 
                                             <!-- Country Data -->
                                             <div class="d-flex justify-content-between align-items-center">
-                                                <p class="mb-1"><img src="{{assets('manager/images/flags/ca.svg')}}" alt="user-image"
+                                                <p class="mb-1"><img src="{{asset('manager/images/flags/ca.svg')}}" alt="user-image"
                                                         class="me-1 rounded-circle" height="20"> <span
                                                         class="align-middle">Canada</span> </p>
                                                 <div>
@@ -2660,21 +2660,21 @@
     </div>
 
     <!-- Vendor js -->
-    <script src="{{assets('manager/js/vendor.min.js')}}"></script>
+    <script src="{{asset('manager/js/vendor.min.js')}}"></script>
 
     <!-- App js -->
-    <script src="{{assets('manager/js/app.js')}}"></script>
+    <script src="{{asset('manager/js/app.js')}}"></script>
 
     <!-- Apex Chart js -->
-    <script src="{{assets('manager/vendor/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('manager/vendor/apexcharts/apexcharts.min.js')}}"></script>
 
     <!-- Vector Map Js -->
-    <script src="{{assets('manager/vendor/jsvectormap/jsvectormap.min.js')}}"></script>
-    <script src="{{assets('manager/vendor/jsvectormap/maps/world-merc.js')}}"></script>
-    <script src="{{assets('manager/vendor/jsvectormap/maps/world.js')}}"></script>
+    <script src="{{asset('manager/vendor/jsvectormap/jsvectormap.min.js')}}"></script>
+    <script src="{{asset('manager/vendor/jsvectormap/maps/world-merc.js')}}"></script>
+    <script src="{{asset('manager/vendor/jsvectormap/maps/world.js')}}"></script>
 
     <!-- Projects Analytics Dashboard App js -->
-    <script src="{{assets('manager/js/pages/dashboard.js')}}"></script>
+    <script src="{{asset('manager/js/pages/dashboard.js')}}"></script>
 
 </body>
 </html>

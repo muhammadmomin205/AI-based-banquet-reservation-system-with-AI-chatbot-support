@@ -3,7 +3,7 @@
 use App\Http\Controllers\customer\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
+Route::get('/customer/home', function () {
     return view('customer.pages.index', ['pageTitle' => 'Home']);
 })->name('customer');
 Route::get('customer/signup', function () {
@@ -17,7 +17,7 @@ Route::post('customer/signup-customer', [AuthController::class, 'signupCustomer'
 Route::post('customer/login-user', [AuthController::class, 'loginUser'])->name('customer.login-user');
 Route::get('customer/customer-logout', [AuthController::class, 'customerLogout'])->name('customer.customer-logout');
 Route::get('customer/manager-logout', [AuthController::class, 'managerLogout'])->name('customer.manager-logout');
-Route::get('/manager', function () {
+Route::get('/manager/home', function () {
     return view('manager.pages.index', ['pageTitle' => 'Home Page']);
 })->name('manager');
 
