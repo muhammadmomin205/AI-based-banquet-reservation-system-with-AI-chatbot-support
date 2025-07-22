@@ -24,7 +24,7 @@
             <!-- Hero Section -->
             <div class="tour-hero">
                 <div class="hero-image-wrapper">
-                    <img src="https://bootstrapmade.com/content/demo/Tour/manager/img/travel/showcase-9.webp"
+                    <img src="https://bootstrapmade.com/content/demo/Tour/assets/img/travel/showcase-9.webp"
                         alt="Mediterranean Adventure Tour" class="img-fluid w-100">
                     <div class="hero-overlay">
                         <div class="hero-content">
@@ -47,9 +47,9 @@
                 <h2>Photo Gallery</h2>
                 <div class="gallery-grid">
                     <div class="gallery-item">
-                        <a href="https://bootstrapmade.com/content/demo/Tour/manager/img/travel/destination-1.webp"
+                        <a href="https://bootstrapmade.com/content/demo/Tour/assets/img/travel/destination-1.webp"
                             class="glightbox">
-                            <img src="https://bootstrapmade.com/content/demo/Tour/manager/img/travel/destination-1.webp"
+                            <img src="https://bootstrapmade.com/content/demo/Tour/assets/img/travel/destination-1.webp"
                                 alt="Venice Canals" class="img-fluid" loading="lazy">
                         </a>
                     </div>
@@ -72,9 +72,9 @@
                         </a>
                     </div>
                     <div class="gallery-item">
-                        <a href="https://bootstrapmade.com/content/demo/Tour/manager/img/travel/destination-5.webp"
+                        <a href="https://bootstrapmade.com/content/demo/Tour/assets/img/travel/destination-5.webp"
                             class="glightbox">
-                            <img src="https://bootstrapmade.com/content/demo/Tour/manager/img/travel/destination-5.webp"
+                            <img src="https://bootstrapmade.com/content/demo/Tour/assets/img/travel/destination-5.webp"
                                 alt="Hagia Sophia" class="img-fluid" loading="lazy">
                         </a>
                     </div>

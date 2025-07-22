@@ -64,6 +64,7 @@
 
     <!-- Main JS File -->
     <script src="{{ asset('customer/js/main.js') }}"></script>
+    @include('customer.partials.toastr')
     @yield('js')
 </body>
 

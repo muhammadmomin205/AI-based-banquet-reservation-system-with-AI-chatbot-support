@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\customer\AuthController;
+use App\Http\Controllers\customer\UploadDocumentsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/customer/home', function () {
@@ -36,3 +37,5 @@ Route::get('customer/banquets-details', function () {
 Route::get('customer/banquets-booking', function () {
     return view('customer.pages.banquet-booking', ['pageTitle' => 'Banquets Booking']);
 });
+Route::get('customer/upload-documents/{id}', [UploadDocumentsController::class, 'uploadDocuments'])->name('customer.upload-documents');
+Route::post('customer/save-documents', [UploadDocumentsController::class, 'saveDocuments'])->name('customer.save-documents');

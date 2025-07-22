@@ -13,21 +13,7 @@
     </style>
 @endsection
 @section('main')
-    <!-- Page Title -->
-    <div class="page-title dark-background" data-aos="fade"
-        style="background-image: url({{ asset('customer/img/page_title/page_title1\.jpg') }});">
-        <div class="container position-relative">
-            <h1>{{ $pageTitle ?? 'BanquetHub' }}</h1>
-            <p>Forgotten your password? No problem! Just enter your registered email address below and we'll send you a
-                secure link to reset your password. Make sure to check your inbox (and spam folder) for the email.</p>
-            <nav class="breadcrumbs">
-                <ol>
-                    <li><a href="{{route('customer')}}">Home</a></li>
-                    <li class="current">{{ $pageTitle ?? 'BanquetHub' }}</li>
-                </ol>
-            </nav>
-        </div>
-    </div><!-- End Page Title -->
+    @include('customer.partials.page-title')
 
     <!-- Reset Password Section -->
     <section id="contact" class="contact section">
@@ -67,23 +53,7 @@
 @section('js')
     <script>
         $(document).ready(function() {
-            toastr.options = {
-                "closeButton": false,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-top-center",
-                "preventDuplicates": true,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "7000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
+
             // ✅ Setup CSRF token for all AJAX
             $.ajaxSetup({
                 headers: {
@@ -121,9 +91,9 @@
                             toastr.error(errorMessages);
                         } else if (xhr.status === 401) {
                             toastr.error(xhr.responseJSON.error);
-
+                        } else {
+                            toastr.error('Check your Network Connection');
                         }
-
                     }
                 });
             });

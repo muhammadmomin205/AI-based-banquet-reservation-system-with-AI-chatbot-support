@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\customer;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Models\customer\Customer;
@@ -20,6 +19,7 @@ use Illuminate\Auth\Events\PasswordReset;
 
 class AuthController extends Controller
 {
+
     public function signupManager(Request $request)
     {
         $request->validate([
@@ -32,34 +32,48 @@ class AuthController extends Controller
                 new UniqueEmailMultipleTables
             ],
             'phone'            => 'required|regex:/^03[0-9]{9}$/',
-            'password'        => 'required|string|min:8',
+            'password'         => 'required|string|min:8',
             'confirm_password' => 'required|same:password',
         ]);
-        $emailData = [
-            'email_title'           => 'Banquet Registration - Pending Approval',
-            'owner_name'            => $request->name,
-            'intro'                 => 'Thank you for registering your banquet with BanquetHub.',
-            'status'                => 'Pending Approval',
-            'instructions'          => 'To complete the registration process, please upload your required documents at the link below:',
-            'document_upload_link'  => 'banquet.documents.upload',
-            'outro'                 => 'We’ll review your documents and get back to you shortly.',
-        ];
 
-        Mail::to($request->email)->send(new ManagerRegistrationEmail($emailData));
+        DB::beginTransaction();
 
-        $manager = new BanquetManager();
-        $manager->name = $request->name;
-        $manager->email = $request->email;
-        $manager->phone = $request->phone;
-        $manager->banquet_name = $request->banquet_name;
-        $manager->banquet_address = $request->banquet_address;
-        $manager->password = Hash::make($request->password);
-        $manager->save();
+        try {
+            $manager = new BanquetManager();
+            $manager->name = $request->name;
+            $manager->email = $request->email;
+            $manager->phone = $request->phone;
+            $manager->banquet_name = $request->banquet_name;
+            $manager->banquet_address = $request->banquet_address;
+            $manager->password = Hash::make($request->password);
+            $manager->save();
 
-        return response()->json([
-            'success' => 'Registered successfully!',
-        ], 200);
+            $emailData = [
+                'email_title'           => 'Banquet Registration - Pending Approval',
+                'owner_name'            => $request->name,
+                'status'                => 'Pending Approval',
+                'intro'                 => 'Thank you for registering your banquet with BanquetHub.',
+                'instructions'          => 'To complete the registration process, please upload your required documents at the link below:',
+                'outro'                 => 'We’ll review your documents and get back to you shortly.',
+                'manager_id'            => $manager->id,
+            ];
+
+            // 👇 If mail fails, it will throw exception
+            Mail::to($request->email)->send(new ManagerRegistrationEmail($emailData));
+
+            DB::commit();
+
+            return response()->json([
+                'success' => 'Registered successfully!',
+            ], 200);
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return response()->json([
+                'error' => 'Something went wrong during registration. Please try again.',
+            ], 500);
+        }
     }
+
     public function signupCustomer(Request $request)
     {
         $request->validate([
