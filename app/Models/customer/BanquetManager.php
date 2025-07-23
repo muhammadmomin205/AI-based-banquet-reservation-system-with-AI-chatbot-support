@@ -24,4 +24,8 @@ class BanquetManager extends  Authenticatable  implements CanResetPassword
     protected $hidden = [
         'password',
     ];
+    public function banquet()
+    {
+        return $this->hasOne(Banquet::class);
+    }
 }

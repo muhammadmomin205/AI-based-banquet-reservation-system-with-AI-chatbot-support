@@ -20,6 +20,14 @@ use Illuminate\Auth\Events\PasswordReset;
 class AuthController extends Controller
 {
 
+    public function signup()
+    {
+        return view('customer.pages.auth.signup', ['pageTitle' => 'Signup']);
+    }
+    public function login()
+    {
+        return view('customer.pages.auth.login', ['pageTitle' => 'Login']);
+    }
     public function signupManager(Request $request)
     {
         $request->validate([

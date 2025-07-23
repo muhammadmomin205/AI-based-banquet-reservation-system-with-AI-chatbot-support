@@ -81,7 +81,7 @@
     <script src="{{ asset('manager/vendor/jsvectormap/maps/world.js') }}"></script>
 
     <!-- Projects Analytics Dashboard App js -->
-    <script src="{{ asset('manager/js/pages/dashboard.js') }}"></script>
+    {{-- <script src="{{ asset('manager/js/pages/dashboard.js') }}"></script> --}}
     @yield('js')
 </body>
 

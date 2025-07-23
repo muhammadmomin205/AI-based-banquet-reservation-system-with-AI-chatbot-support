@@ -13,15 +13,15 @@ return new class extends Migration
     {
         Schema::create('banquet_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('banquet_id')->unique(); 
+            $table->unsignedBigInteger('banquet_id')->nullable()->unique();
+            $table->string('profile_image');
+            $table->string('cover_image');
             $table->string('img_1');
             $table->string('img_2');
             $table->string('img_3');
             $table->string('img_4');
             $table->string('img_5');
             $table->string('img_6');
-            $table->string('img_7');
-            $table->string('img_8');
             $table->timestamps();
             $table->foreign('banquet_id')->references('id')->on('banquets')->onDelete('cascade');
         });
