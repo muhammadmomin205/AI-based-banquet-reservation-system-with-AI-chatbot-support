@@ -19,7 +19,7 @@ Route::get('customer/customer-logout', [AuthController::class, 'customerLogout']
 Route::get('customer/manager-logout', [AuthController::class, 'managerLogout'])->name('customer.manager-logout');
 
 Route::get('/manager/home', function () {
-    return view('manager.pages.index', ['pageTitle' => 'Home Page']);
+    return view('manager.pages.index', ['pageTitle' => 'Home']);
 })->name('manager');
 
 Route::get('customer/show-link-request-form', [AuthController::class, 'showLinkRequestForm'])->name('customer.show-link-request-form');

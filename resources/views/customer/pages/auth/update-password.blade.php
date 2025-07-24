@@ -13,7 +13,6 @@
     </style>
 @endsection
 @section('main')
-
     @include('customer.partials.page-title')
 
 
@@ -79,22 +78,23 @@
 
             $form.on('submit', function(e) {
                 e.preventDefault();
-                $('#preloader').show(); // Show preloader before sending
-
                 let formData = $form.serialize();
 
                 $.ajax({
                     url: '{{ route('customer.update-password') }}',
                     type: "POST",
                     data: formData,
+                    beforeSend: function() {
+                        $('#ajax-spinner').removeClass('d-none');
+                    },
                     success: function(response) {
-                        $('#preloader').hide(); // Hide preloader
+                        $('#ajax-spinner').addClass('d-none');
                         $form[0].reset(); // Reset form
                         toastr.success(response.success);
                         window.location.href = '{{ route('customer.login') }}'
                     },
                     error: function(xhr) {
-                        $('#preloader').hide(); // Always hide preloader
+                        $('#ajax-spinner').addClass('d-none');
                         if (xhr.status === 422) {
                             let errors = xhr.responseJSON.errors;
                             let errorMessages = '';
@@ -105,9 +105,8 @@
                             toastr.error(errorMessages);
                         } else if (xhr.status === 401) {
                             toastr.error(xhr.responseJSON.error);
-                        }
-                        else{
-                              toastr.error('Check your Network Connection');                          
+                        } else {
+                            toastr.error('Check your Network Connection');
                         }
                     }
                 });

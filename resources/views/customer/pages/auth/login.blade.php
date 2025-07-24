@@ -79,16 +79,17 @@
 
             $form.on('submit', function(e) {
                 e.preventDefault();
-                $('#preloader').show(); // Show preloader before sending
-
                 let formData = $form.serialize();
 
                 $.ajax({
                     url: '{{ route('customer.login-user') }}',
                     type: "POST",
                     data: formData,
+                    beforeSend: function() {
+                        $('#ajax-spinner').removeClass('d-none');
+                    },
                     success: function(response) {
-                        $('#preloader').hide(); // Hide preloader
+                        $('#ajax-spinner').addClass('d-none');
                         $form[0].reset(); // Reset form
                         toastr.success(response.success);
                         if (response.user_type == 'customer') {
@@ -98,7 +99,7 @@
                         }
                     },
                     error: function(xhr) {
-                        $('#preloader').hide(); // Always hide preloader
+                        $('#ajax-spinner').addClass('d-none');
                         if (xhr.status === 422) {
                             let errors = xhr.responseJSON.errors;
                             let errorMessages = '';

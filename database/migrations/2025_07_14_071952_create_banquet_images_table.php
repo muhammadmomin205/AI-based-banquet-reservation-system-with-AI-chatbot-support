@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('banquet_images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('banquet_id')->nullable()->unique();
             $table->string('profile_image');
             $table->string('cover_image');
             $table->string('img_1');
@@ -23,7 +22,6 @@ return new class extends Migration
             $table->string('img_5');
             $table->string('img_6');
             $table->timestamps();
-            $table->foreign('banquet_id')->references('id')->on('banquets')->onDelete('cascade');
         });
     }
 

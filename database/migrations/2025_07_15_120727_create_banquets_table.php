@@ -13,28 +13,33 @@ return new class extends Migration
     {
         Schema::create('banquets', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('manager_id')->unique();
+            $table->unsignedBigInteger('images_id')->unique()->nullable();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->string('address');
-            $table->string('area');
-            $table->integer('capacity');
-            $table->string('parking_availiable');
-            $table->string('social_media');
-            $table->enum('status', ['active', 'inactive', 'maintenance'])->default('active');
-            $table->time('opening_time');
-            $table->time('closing_time');
-            $table->decimal('rate', 10, 2);
-            $table->decimal('advance_amount', 10, 2);
-            $table->string('catering_available');
-            $table->string('outside_catering_allowed');
-            $table->string('decoration_available');
-            $table->string('outside_decoration_allowed');
-            $table->string('ac');
-            $table->string('screen_available');
-            $table->string('sound_system_available');
-            $table->string('bridal_room_available');
-            $table->string('fire_safety');
-            $table->string('security_available');
+            $table->string('area')->nullable();
+            $table->integer('capacity')->nullable();
+            $table->string('parking_availiable')->nullable();
+            $table->string('social_media')->nullable();
+            $table->time('opening_time')->nullable();
+            $table->time('closing_time')->nullable();
+            $table->decimal('rate', 10, 2)->nullable();
+            $table->decimal('advance_amount', 10, 2)->nullable();
+            $table->string('catering_available')->nullable();
+            $table->string('outside_catering_allowed')->nullable();
+            $table->string('decoration_available')->nullable();
+            $table->string('outside_decoration_allowed')->nullable();
+            $table->string('ac')->nullable();
+            $table->string('screen_available')->nullable();
+            $table->string('sound_system_available')->nullable();
+            $table->string('bridal_room_available')->nullable();
+            $table->string('fire_safety')->nullable();
+            $table->string('security_available')->nullable();
+            $table->enum('status', ['active', 'inactive', 'maintenance', 'pending', 'approved', 'rejected'])->default('pending');
+            $table->foreign('manager_id')->references('id')->on('banquet_managers')->onDelete('cascade');
+            $table->foreign('images_id')->references('id')->on('banquet_images')->onDelete('set null');
+
             $table->timestamps();
         });
     }

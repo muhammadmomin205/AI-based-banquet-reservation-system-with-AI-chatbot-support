@@ -2,15 +2,22 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Dashboard | Greeva - Responsive Bootstrap 5 Admin Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="Coderthemes" name="author" />
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ $pageTitle . ' Page' ?? 'BanquetHub' }}</title>
+    <!-- ajax Spinner css code -->
+    <style>
+        #page-load-spinner {
+            transition: opacity 0.5s ease;
+        }
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('manager/images/favicon.ico') }}">
-
+        #page-load-spinner.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
     <!-- Vector Maps css -->
     <link href="{{ asset('manager/vendor/jsvectormap/jsvectormap.min.css') }}" rel="stylesheet" type="text/css">
 
@@ -31,8 +38,7 @@
 <body>
     <!-- Begin page -->
     <div class="wrapper">
-
-
+        @include('manager.partials.spinner')
         <!-- Sidenav Menu Start -->
         @include('manager.partials.side-menu')
         <!-- Sidenav Menu End -->
@@ -65,7 +71,16 @@
 
     <!-- Theme Settings -->
     @include('manager.partials.theme')
-
+    <!-- ajax Spinner js code -->
+    <script>
+        window.addEventListener('load', function() {
+            const spinner = document.getElementById('page-load-spinner');
+            if (spinner) {
+                spinner.classList.add('hide');
+                setTimeout(() => spinner.remove(), 500); // optional: remove from DOM after fade-out
+            }
+        });
+    </script>
     <!-- Vendor js -->
     <script src="{{ asset('manager/js/vendor.min.js') }}"></script>
 

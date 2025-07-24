@@ -177,7 +177,6 @@
 
             $form.on('submit', function(e) {
                 e.preventDefault();
-                $('#preloader').show(); // Show preloader before sending
                 let formData = $form.serialize();
                 let role = $roleInput.val();
                 let url = "";
@@ -195,13 +194,16 @@
                     url: url,
                     type: "POST",
                     data: formData,
+                    beforeSend: function() {
+                        $('#ajax-spinner').removeClass('d-none');
+                    },
                     success: function(response) {
-                        $('#preloader').hide(); // Hide preloader on error too
+                        $('#ajax-spinner').addClass('d-none');
                         $form[0].reset();
                         toastr.success(response.success);
                     },
                     error: function(xhr) {
-                        $('#preloader').hide(); // Always hide preloader
+                        $('#ajax-spinner').addClass('d-none');
                         if (xhr.status === 422) {
                             let errors = xhr.responseJSON.errors;
                             let errorMessages = '';
@@ -212,9 +214,8 @@
                             toastr.error(errorMessages);
                         } else if (xhr.status === 500) {
                             toastr.error(xhr.responseJSON.error);
-                        }
-                        else{
-                              toastr.error('Check your Network Connection');                          
+                        } else {
+                            toastr.error('Check your Network Connection');
                         }
                     }
                 });

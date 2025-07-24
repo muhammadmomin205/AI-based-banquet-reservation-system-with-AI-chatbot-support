@@ -19,7 +19,6 @@
         </div>
         <div class="row">
             <form id="imageUploadForm" enctype="multipart/form-data">
-                @csrf
                 <div class="row">
                     @php
                         $imageLabels = [
@@ -64,10 +63,8 @@
                 <div class="modal-body p-4">
                     <div class="text-center">
                         <i class="ti ti-circle-x h1"></i>
-                        <h4 class="mt-2">Oh snap!</h4>
+                        <h4 class="mt-2">Errors</h4>
                         <p class="mt-3" id="danger-alert-message">
-                            A critical security breach has been identified on our platform. Your personal
-                            information and sensitive data may be at risk.
                         </p>
                         <button type="button" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
                     </div>
@@ -82,10 +79,9 @@
                 <div class="modal-body p-4">
                     <div class="text-center">
                         <i class="ti ti-check h1"></i>
-                        <h4 class="mt-2">Well Done!</h4>
-                        <p class="mt-3">
-                            Congratulations! You've achieved success! 🎉 Your hard work, dedication, and perseverance
-                            have paid off. Keep up the great work and continue to strive for excellence.
+                        <h4 class="mt-2">Success</h4>
+                        <p class="mt-3" id="success-alert-message">
+
                         </p>
                         <button type="button" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
                     </div>
@@ -97,6 +93,13 @@
 @section('js')
     <script>
         $(document).ready(function() {
+            // ✅ Setup CSRF token for all AJAX
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             // Open file selector
             $('.upload-btn').click(function() {
                 const index = $(this).data('index');
@@ -121,25 +124,31 @@
                 const formData = new FormData(this);
 
                 $.ajax({
-                    url: "{{ route('manager.upload-banquet-images') }}", // Adjust this route name
+                    url: "{{ route('manager.upload-banquet-images') }}",
                     method: 'POST',
                     data: formData,
                     processData: false,
                     contentType: false,
                     beforeSend: function() {
-                        // optional: show loader
+                        $('#ajax-spinner').removeClass('d-none');
                     },
                     success: function(response) {
-                        const successModal = new bootstrap.Modal(document.getElementById(
-                            'success-alert-modal'));
-                        successModal.show();
+                        if (response.status == 'success') {
+                            // Set success messages in modal
+                            $('#success-alert-message').html(response.message);
+                            $('#ajax-spinner').addClass('d-none');
+                            const successModal = new bootstrap.Modal(document.getElementById(
+                                'success-alert-modal'));
+                            successModal.show();
 
-                        $('#imageUploadForm')[0].reset();
-                        $('.card-img-top').attr('src',
-                            '{{ asset('manager/images/error/banquet_error.png') }}');
-                    }
+                            $('#imageUploadForm')[0].reset();
+                            $('.card-img-top').attr('src',
+                                '{{ asset('manager/images/error/banquet_error.png') }}');
+                        }
+                    },
                     error: function(xhr) {
                         if (xhr.status === 422) {
+                            $('#ajax-spinner').addClass('d-none');
                             const errors = xhr.responseJSON.errors;
                             let messages = '<ul class="text-start">';
                             $.each(errors, function(key, value) {
@@ -155,8 +164,9 @@
                                 'danger-alert-modal'));
                             dangerModal.show();
                         } else {
+                            $('#ajax-spinner').addClass('d-none');
                             // General error
-                            $('#danger-alert-message').html('Something went wrong!');
+                            $('#danger-alert-message').html('Check Your network connection');
                             const dangerModal = new bootstrap.Modal(document.getElementById(
                                 'danger-alert-modal'));
                             dangerModal.show();
