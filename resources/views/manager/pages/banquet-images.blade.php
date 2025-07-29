@@ -12,11 +12,20 @@
 @endsection
 @section('main')
     <div class="page-container">
-        <div class="row">
-            <div class="col-12">
-                <h4 class="mb-4 mt-3">Upload images to make your banquet visible to users</h4>
+
+        <div class="page-title-head d-flex align-items-center gap-2">
+            <div class="flex-grow-1">
+                <h4 class="fs-16  fw-bold mb-0">Upload images to make your banquet visible to users</h4>
+            </div>
+
+            <div class="text-end">
+                <ol class="breadcrumb m-0 py-0 fs-13">
+                    <li class="breadcrumb-item"><a href="{{route('manager')}}">{{ request()->getHost() }}</a></li>
+                    <li class="breadcrumb-item active">{{ $pageTitle ?? 'BanquetHub' }}</li>
+                </ol>
             </div>
         </div>
+
         <div class="row">
             <form id="imageUploadForm" enctype="multipart/form-data">
                 <div class="row">
@@ -56,50 +65,10 @@
             </form>
         </div>
     </div>
-    <!-- Danger Alert Modal -->
-    <div class="modal fade" id="danger-alert-modal" tabindex="-1" aria-labelledby="dangerAlertLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-top">
-            <div class="modal-content modal-filled bg-danger">
-                <div class="modal-body p-4">
-                    <div class="text-center">
-                        <i class="ti ti-circle-x h1"></i>
-                        <h4 class="mt-2">Errors</h4>
-                        <p class="mt-3" id="danger-alert-message">
-                        </p>
-                        <button type="button" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Success Alert Modal -->
-    <div class="modal fade" id="success-alert-modal" tabindex="-1" aria-labelledby="successAlertLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-top">
-            <div class="modal-content modal-filled bg-success">
-                <div class="modal-body p-4">
-                    <div class="text-center">
-                        <i class="ti ti-check h1"></i>
-                        <h4 class="mt-2">Success</h4>
-                        <p class="mt-3" id="success-alert-message">
-
-                        </p>
-                        <button type="button" class="btn btn-light my-2" data-bs-dismiss="modal">Continue</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection
 @section('js')
     <script>
         $(document).ready(function() {
-            // ✅ Setup CSRF token for all AJAX
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
             // Open file selector
             $('.upload-btn').click(function() {
                 const index = $(this).data('index');

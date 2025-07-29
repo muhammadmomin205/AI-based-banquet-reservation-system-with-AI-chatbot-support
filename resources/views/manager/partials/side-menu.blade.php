@@ -43,8 +43,8 @@
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="apps-invoice-details.html" class="side-nav-link">
-                                <span class="menu-text">View Invoice</span>
+                            <a href="{{route('manager.add-details')}}" class="side-nav-link">
+                                <span class="menu-text">Add Details</span>
                             </a>
                         </li>
                         <li class="side-nav-item">

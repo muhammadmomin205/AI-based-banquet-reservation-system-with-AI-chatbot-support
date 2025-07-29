@@ -535,9 +535,9 @@
                         </a>
 
                         <!-- item-->
-                        <a href="javascript:void(0);" class="dropdown-item active fw-semibold text-danger">
+                        <a id="managerLogout" class="dropdown-item active fw-semibold text-danger">
                             <i class="ti ti-logout me-1 fs-17 align-middle"></i>
-                            <span class="align-middle">Sign Out</span>
+                            <span class="align-middle">Log Out</span>
                         </a>
                     </div>
                 </div>

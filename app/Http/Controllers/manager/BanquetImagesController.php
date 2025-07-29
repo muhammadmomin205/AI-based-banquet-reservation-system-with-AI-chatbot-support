@@ -4,12 +4,14 @@ namespace App\Http\Controllers\manager;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\customer\Banquet;
 use App\Http\Controllers\Controller;
 use App\Models\manager\BanquetImage;
+use Illuminate\Support\Facades\Auth;
 
 class BanquetImagesController extends Controller
 {
-    public function index()
+    public function banquetImages()
     {
         return view('manager.pages.banquet-images', ['pageTitle' => 'Banquet Images']);
     }
@@ -86,7 +88,19 @@ class BanquetImagesController extends Controller
                 $data[$columnName] = $filename;
             }
         }
-        BanquetImage::create($data);
+        //  Save images and get the inserted record
+        $banquetImages = BanquetImage::create($data);
+
+        //  Get the authenticated manager
+        $manager = Auth::guard('banquet_manager')->user();
+
+        //  Find the banquet related to the manager
+        $banquet = Banquet::where('manager_id', $manager->id)->first();
+        //  Update banquet's images_id
+        if ($banquet) {
+            $banquet->images_id = $banquetImages->id;
+            $banquet->save();
+        }
 
         return response()->json([
             'status' => 'success',

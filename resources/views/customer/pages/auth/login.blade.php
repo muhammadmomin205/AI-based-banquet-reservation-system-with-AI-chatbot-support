@@ -100,18 +100,22 @@
                     },
                     error: function(xhr) {
                         $('#ajax-spinner').addClass('d-none');
-                        if (xhr.status === 422) {
-                            let errors = xhr.responseJSON.errors;
-                            let errorMessages = '';
 
-                            $.each(errors, function(key, value) {
-                                errorMessages += `• ${value[0]}<br>`;
-                            });
-                            toastr.error(errorMessages);
-                        } else if (xhr.status === 401) {
-                            toastr.error(xhr.responseJSON.error);
+                        const {
+                            status,
+                            responseJSON
+                        } = xhr;
+                        const showError = msg => toastr.error(msg);
+
+                        if (status === 422) {
+                            const errors = responseJSON.errors;
+                            const messages = Object.values(errors).map(msg => `• ${msg[0]}`)
+                                .join('<br>');
+                            showError(messages);
+                        } else if (status === 401 || status === 403) {
+                            showError(responseJSON.error);
                         } else {
-                            toastr.error('Check your Network Connection');
+                            showError('Check your Network Connection');
                         }
                     }
                 });

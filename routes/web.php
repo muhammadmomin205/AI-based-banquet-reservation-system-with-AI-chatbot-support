@@ -3,6 +3,7 @@
 use App\Http\Controllers\customer\AuthController;
 use App\Http\Controllers\customer\BanquetController;
 use App\Http\Controllers\customer\UploadDocumentsController;
+use App\Http\Controllers\manager\BanquetDetailsController;
 use App\Http\Controllers\manager\BanquetImagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,8 @@ Route::get('customer/login', [AuthController::class, 'login'])->name('customer.l
 Route::post('customer/signup-manager', [AuthController::class, 'signupManager'])->name('customer.signup-manager');
 Route::post('customer/signup-customer', [AuthController::class, 'signupCustomer'])->name('customer.signup-customer');
 Route::post('customer/login-user', [AuthController::class, 'loginUser'])->name('customer.login-user');
-Route::get('customer/customer-logout', [AuthController::class, 'customerLogout'])->name('customer.customer-logout');
-Route::get('customer/manager-logout', [AuthController::class, 'managerLogout'])->name('customer.manager-logout');
+Route::post('customer/customer-logout', [AuthController::class, 'customerLogout'])->name('customer.customer-logout');
+Route::post('customer/manager-logout', [AuthController::class, 'managerLogout'])->name('customer.manager-logout');
 
 Route::get('/manager/home', function () {
     return view('manager.pages.index', ['pageTitle' => 'Home']);
@@ -33,5 +34,8 @@ Route::get('customer/banquets-booking',  [BanquetController::class, 'banquetsBoo
 Route::get('customer/upload-documents/{id}', [UploadDocumentsController::class, 'uploadDocuments'])->name('customer.upload-documents');
 Route::post('customer/save-documents', [UploadDocumentsController::class, 'saveDocuments'])->name('customer.save-documents');
 
-Route::get('manager/banquet-images', [BanquetImagesController::class, 'index'])->name('manager.banquet-images');
+Route::get('manager/banquet-images', [BanquetImagesController::class, 'banquetImages'])->name('manager.banquet-images');
 Route::post('manager/upload-banquet-images', [BanquetImagesController::class, 'uploadBanquetImages'])->name('manager.upload-banquet-images');
+
+Route::get('manager/add-details',[BanquetDetailsController::class , 'addDetails' ])->name('manager.add-details');
+Route::post('manager/save-details',[BanquetDetailsController::class , 'saveDetails' ])->name('manager.save-details');

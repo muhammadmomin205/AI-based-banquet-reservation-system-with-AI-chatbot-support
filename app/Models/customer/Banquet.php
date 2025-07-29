@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Banquet extends Model
 {
-    //
+    public $table = 'banquets';
+    protected $guarded = [];
+    
     public function images()
     {
         return $this->hasOne(BanquetImage::class);

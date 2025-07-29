@@ -18,6 +18,9 @@
             visibility: hidden;
         }
     </style>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
     <!-- Vector Maps css -->
     <link href="{{ asset('manager/vendor/jsvectormap/jsvectormap.min.css') }}" rel="stylesheet" type="text/css">
 
@@ -71,6 +74,7 @@
 
     <!-- Theme Settings -->
     @include('manager.partials.theme')
+    @include('manager.partials.modal')
     <!-- ajax Spinner js code -->
     <script>
         window.addEventListener('load', function() {
@@ -94,9 +98,8 @@
     <script src="{{ asset('manager/vendor/jsvectormap/jsvectormap.min.js') }}"></script>
     <script src="{{ asset('manager/vendor/jsvectormap/maps/world-merc.js') }}"></script>
     <script src="{{ asset('manager/vendor/jsvectormap/maps/world.js') }}"></script>
+    <script src="{{ asset('manager/js/logout.js') }}"></script>
 
-    <!-- Projects Analytics Dashboard App js -->
-    {{-- <script src="{{ asset('manager/js/pages/dashboard.js') }}"></script> --}}
     @yield('js')
 </body>
 

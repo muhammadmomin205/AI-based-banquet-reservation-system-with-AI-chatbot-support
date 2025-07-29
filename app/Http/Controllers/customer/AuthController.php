@@ -4,6 +4,7 @@ namespace App\Http\Controllers\customer;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\customer\Banquet;
 use App\Models\customer\Customer;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -56,6 +57,13 @@ class AuthController extends Controller
             $manager->password = Hash::make($request->password);
             $manager->save();
 
+            //  Create Banquet and assign manager_id
+            $banquet = new Banquet();
+            $banquet->name = $request->banquet_name;
+            $banquet->address = $request->banquet_address;
+            $banquet->manager_id = $manager->id; // 🔑 Storing manager ID here
+
+            $banquet->save();
             $emailData = [
                 'email_title'           => 'Banquet Registration - Pending Approval',
                 'owner_name'            => $request->name,
@@ -126,10 +134,19 @@ class AuthController extends Controller
         if (Auth::guard('banquet_manager')->attempt(['email' => $request->email, 'password' => $request->password])) {
             $manager = Auth::guard('banquet_manager')->user();
 
-            return response()->json([
-                'success'    => 'login successful!',
-                'user_type'  => 'banquet_manager',
-            ]);
+            $banquet = Banquet::where('manager_id', $manager->id)->first();
+
+            if ($banquet && $banquet->status === 'approved') {
+                return response()->json([
+                    'success'    => 'Login successful!',
+                    'user_type'  => 'banquet_manager',
+                ]);
+            } else {
+                Auth::guard('banquet_manager')->logout(); 
+                return response()->json([
+                    'error' => 'Your banquet is not approved yet.',
+                ], 403);
+            }
         }
 
         // If both failed
