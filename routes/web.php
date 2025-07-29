@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\customer\AuthController;
 use App\Http\Controllers\customer\BanquetController;
-use App\Http\Controllers\customer\UploadDocumentsController;
-use App\Http\Controllers\manager\BanquetDetailsController;
-use App\Http\Controllers\manager\BanquetImagesController;
+use App\Http\Controllers\customer\DocumentController;
+use App\Http\Controllers\manager\BanquetDetailController;
+use App\Http\Controllers\manager\BanquetImageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/customer/home', function () {
@@ -31,11 +31,11 @@ Route::post('customer/update-password', [AuthController::class, 'updatePassword'
 Route::get('customer/banquets', [BanquetController::class, 'banquets']);
 Route::get('customer/banquets-details', [BanquetController::class, 'banquetsDetails']);
 Route::get('customer/banquets-booking',  [BanquetController::class, 'banquetsBooking']);
-Route::get('customer/upload-documents/{id}', [UploadDocumentsController::class, 'uploadDocuments'])->name('customer.upload-documents');
-Route::post('customer/save-documents', [UploadDocumentsController::class, 'saveDocuments'])->name('customer.save-documents');
+Route::get('customer/upload-documents/{id}', [DocumentController::class, 'uploadDocuments'])->name('customer.upload-documents');
+Route::post('customer/save-documents', [DocumentController::class, 'saveDocuments'])->name('customer.save-documents');
 
-Route::get('manager/banquet-images', [BanquetImagesController::class, 'banquetImages'])->name('manager.banquet-images');
-Route::post('manager/upload-banquet-images', [BanquetImagesController::class, 'uploadBanquetImages'])->name('manager.upload-banquet-images');
+Route::get('manager/banquet-images', [BanquetImageController::class, 'banquetImages'])->name('manager.banquet-images');
+Route::post('manager/upload-banquet-images', [BanquetImageController::class, 'uploadBanquetImages'])->name('manager.upload-banquet-images');
 
-Route::get('manager/add-details',[BanquetDetailsController::class , 'addDetails' ])->name('manager.add-details');
-Route::post('manager/save-details',[BanquetDetailsController::class , 'saveDetails' ])->name('manager.save-details');
+Route::get('manager/add-details',[BanquetDetailController::class , 'addDetails' ])->name('manager.add-details');
+Route::post('manager/save-details',[BanquetDetailController::class , 'saveDetails' ])->name('manager.save-details');

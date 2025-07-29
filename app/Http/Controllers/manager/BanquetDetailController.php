@@ -7,7 +7,7 @@ use App\Models\customer\Banquet;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class BanquetDetailsController extends Controller
+class BanquetDetailController extends Controller
 {
     public function addDetails()
     {

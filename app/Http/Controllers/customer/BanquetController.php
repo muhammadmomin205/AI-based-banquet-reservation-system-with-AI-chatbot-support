@@ -11,12 +11,4 @@ class BanquetController extends Controller
     {
         return view('customer.pages.banquet', ['pageTitle' => 'Banquets']);
     }
-    public function banquetsDetails()
-    {
-        return view('customer.pages.banquet-details', ['pageTitle' => 'Banquets Details']);
-    }
-    public function banquetsBooking()
-    {
-        return view('customer.pages.banquet-booking', ['pageTitle' => 'Banquets Booking']);
-    }
 }

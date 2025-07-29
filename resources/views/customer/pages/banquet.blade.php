@@ -10,8 +10,8 @@
 
         <!-- Section Title -->
         <div class="container section-title" data-aos="fade-up">
-            <h2>Featured Tours</h2>
-            <div><span>Check Our</span> <span class="description-title">Featured Tours</span></div>
+            <h2>Latest Banquets</h2>
+            <div><span>Check Our</span> <span class="description-title">Latest Banquets</span></div>
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">

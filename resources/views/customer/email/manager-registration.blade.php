@@ -15,7 +15,7 @@
     <p>{{ $data['instructions'] }}</p>
 
     <p style="margin: 20px 0;">
-        👉 <a href="{{ route('customer.upload-documents', $data['manager_id']) }}"
+         <a href="{{ route('customer.upload-documents', $data['manager_id']) }}"
             style="background-color: #007bff; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px;">
             Upload Documents Now
         </a>

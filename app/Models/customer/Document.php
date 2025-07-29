@@ -4,9 +4,9 @@ namespace App\Models\customer;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UploadDocument extends Model
+class Document extends Model
 {
-    protected $table = 'upload_documents'; 
+    protected $table = 'documents'; 
 
     protected $fillable = [
         'manager_id',

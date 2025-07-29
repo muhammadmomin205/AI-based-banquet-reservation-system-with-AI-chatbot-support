@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\manager\BanquetImage;
 use Illuminate\Support\Facades\Auth;
 
-class BanquetImagesController extends Controller
+class BanquetImageController extends Controller
 {
     public function banquetImages()
     {

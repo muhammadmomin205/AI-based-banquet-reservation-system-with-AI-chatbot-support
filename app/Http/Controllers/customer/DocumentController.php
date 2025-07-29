@@ -6,9 +6,9 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\customer\UploadDocument;
+use App\Models\customer\Document;
 
-class UploadDocumentsController extends Controller
+class DocumentController extends Controller
 {
     public function uploadDocuments(String $id)
     {
@@ -47,7 +47,7 @@ class UploadDocumentsController extends Controller
 
         try {
             // Save DB entry first
-            $document = new UploadDocument();
+            $document = new Document();
             $document->manager_id = $request->manager_id;
             $document->utility_bills = $utilityBillName;
             $document->business_card = $businessCardName;
