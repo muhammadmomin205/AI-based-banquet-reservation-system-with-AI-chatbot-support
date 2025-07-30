@@ -1,0 +1,8 @@
+ #page-load-spinner {
+     transition: opacity 0.5s ease;
+ }
+
+ #page-load-spinner.hide {
+     opacity: 0;
+     visibility: hidden;
+ }

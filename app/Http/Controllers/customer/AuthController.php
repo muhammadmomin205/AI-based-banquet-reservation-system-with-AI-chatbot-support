@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ManagerRegistrationEmail;
 use App\Models\customer\BanquetManager;
+use App\Models\manager\BanquetImage;
 use App\Rules\UniqueEmailMultipleTables;
 use Illuminate\Support\Facades\Password;
 use App\Rules\EmailNotFoundMultipleTable;
@@ -63,7 +64,14 @@ class AuthController extends Controller
             $banquet->address = $request->banquet_address;
             $banquet->manager_id = $manager->id; // 🔑 Storing manager ID here
 
+            // Save banquet first
             $banquet->save();
+
+            // Create banquet image and assign banquet_id
+            $banquet_image = new BanquetImage();
+            $banquet_image->banquet_id = $banquet->id;
+            $banquet_image->save();
+
             $emailData = [
                 'email_title'           => 'Banquet Registration - Pending Approval',
                 'owner_name'            => $request->name,
@@ -142,7 +150,7 @@ class AuthController extends Controller
                     'user_type'  => 'banquet_manager',
                 ]);
             } else {
-                Auth::guard('banquet_manager')->logout(); 
+                Auth::guard('banquet_manager')->logout();
                 return response()->json([
                     'error' => 'Your banquet is not approved yet.',
                 ], 403);

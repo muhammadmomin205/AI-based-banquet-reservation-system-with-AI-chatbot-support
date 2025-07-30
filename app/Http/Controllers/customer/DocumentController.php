@@ -12,7 +12,7 @@ class DocumentController extends Controller
 {
     public function uploadDocuments(String $id)
     {
-        return view('customer.pages.upload-documents', [
+        return view('customer.pages.document', [
             'id' => $id,
             'pageTitle' => 'Upload documents'
         ]);

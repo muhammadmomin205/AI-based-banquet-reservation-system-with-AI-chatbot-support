@@ -12,7 +12,7 @@ class Banquet extends Model
     
     public function images()
     {
-        return $this->hasOne(BanquetImage::class);
+        return $this->hasOne(BanquetImage::class , 'banquet_id');
     }
     public function banquet_manager()
     {

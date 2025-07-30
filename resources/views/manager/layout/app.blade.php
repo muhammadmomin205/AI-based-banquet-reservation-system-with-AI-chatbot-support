@@ -7,17 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $pageTitle . ' Page' ?? 'BanquetHub' }}</title>
+    
     <!-- ajax Spinner css code -->
-    <style>
-        #page-load-spinner {
-            transition: opacity 0.5s ease;
-        }
-
-        #page-load-spinner.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-    </style>
+    <link rel="stylesheet" href="{{asset('manager/css/spinner.css')}}"><link>
+    <!--  Favicon -->
+    <link rel="icon" href="{{ asset('manager/imges/favicon/favicon.png') }}" type="image/png">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
@@ -75,16 +69,9 @@
     <!-- Theme Settings -->
     @include('manager.partials.theme')
     @include('manager.partials.modal')
+
     <!-- ajax Spinner js code -->
-    <script>
-        window.addEventListener('load', function() {
-            const spinner = document.getElementById('page-load-spinner');
-            if (spinner) {
-                spinner.classList.add('hide');
-                setTimeout(() => spinner.remove(), 500); // optional: remove from DOM after fade-out
-            }
-        });
-    </script>
+    <script src="{{asset('manager/js/spinner.js')}}"></script>
     <!-- Vendor js -->
     <script src="{{ asset('manager/js/vendor.min.js') }}"></script>
 

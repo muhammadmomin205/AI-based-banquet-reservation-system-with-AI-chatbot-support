@@ -13,14 +13,16 @@ return new class extends Migration
     {
         Schema::create('banquet_images', function (Blueprint $table) {
             $table->id();
-            $table->string('profile_image');
-            $table->string('cover_image');
-            $table->string('img_1');
-            $table->string('img_2');
-            $table->string('img_3');
-            $table->string('img_4');
-            $table->string('img_5');
-            $table->string('img_6');
+            $table->unsignedBigInteger('banquet_id')->unique();
+            $table->string('profile_image')->nullable();
+            $table->string('cover_image')->nullable();
+            $table->string('img_1')->nullable();
+            $table->string('img_2')->nullable();
+            $table->string('img_3')->nullable();
+            $table->string('img_4')->nullable();
+            $table->string('img_5')->nullable();
+            $table->string('img_6')->nullable();
+            $table->foreign('banquet_id')->references('id')->on('banquets');
             $table->timestamps();
         });
     }

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BanquetImage extends Model
 {
-    protected $tabel = 'banquet_images';
+    protected $table = 'banquet_images';
     protected $fillable = [
         'profile_image',
         'cover_image',

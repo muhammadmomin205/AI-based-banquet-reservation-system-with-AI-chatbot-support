@@ -11,7 +11,7 @@ class BanquetDetailController extends Controller
 {
     public function addDetails()
     {
-        return view('manager.pages.banquet-details', ['pageTitle' => 'Banquet Details']);
+        return view('manager.pages.banquet-detail', ['pageTitle' => 'Banquet Details']);
     }
     public function saveDetails(Request $request)
     {

@@ -13,7 +13,7 @@ class BanquetImageController extends Controller
 {
     public function banquetImages()
     {
-        return view('manager.pages.banquet-images', ['pageTitle' => 'Banquet Images']);
+        return view('manager.pages.banquet-image', ['pageTitle' => 'Banquet Images']);
     }
 
     public function uploadBanquetImages(Request $request)
@@ -88,20 +88,17 @@ class BanquetImageController extends Controller
                 $data[$columnName] = $filename;
             }
         }
-        //  Save images and get the inserted record
-        $banquetImages = BanquetImage::create($data);
-
-        //  Get the authenticated manager
         $manager = Auth::guard('banquet_manager')->user();
 
-        //  Find the banquet related to the manager
         $banquet = Banquet::where('manager_id', $manager->id)->first();
-        //  Update banquet's images_id
-        if ($banquet) {
-            $banquet->images_id = $banquetImages->id;
-            $banquet->save();
-        }
 
+        if ($banquet) {
+            $banquetImages = BanquetImage::where('banquet_id', $banquet->id)->first();
+
+            if ($banquetImages) {
+                $banquetImages->update($data);
+            }
+        }
         return response()->json([
             'status' => 'success',
             'message' => 'Image Uploaded Successfully'

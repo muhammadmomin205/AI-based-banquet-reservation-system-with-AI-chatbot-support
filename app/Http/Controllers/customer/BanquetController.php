@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers\customer;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\customer\BanquetManager;
 
 class BanquetController extends Controller
 {
     public function banquets()
     {
-        return view('customer.pages.banquet', ['pageTitle' => 'Banquets']);
+        $banquets = BanquetManager::with('banquet.images')->get();
+
+        return view('customer.pages.banquet', [
+            'pageTitle' => 'Banquets',
+            'banquets' => $banquets
+        ]);
     }
 }

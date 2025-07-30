@@ -1649,7 +1649,7 @@ section,
 .featured-tours .tour-card .tour-content p {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   font-size: 15px;
-  line-height: 1.6;
+  line-height: 25PX;
   margin-bottom: 20px;
   flex-grow: 1;
 }

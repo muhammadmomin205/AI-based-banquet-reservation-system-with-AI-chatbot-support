@@ -7,17 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ $pageTitle . ' Page' ?? 'BanquetHub' }}</title>
-      <!-- ajax Spinner css code -->
-    <style>
-        #page-load-spinner {
-            transition: opacity 0.5s ease;
-        }
 
-        #page-load-spinner.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-    </style>
+    <!-- ajax Spinner css code -->
+    <link rel="stylesheet" href="{{ asset('customer/css/spinner.css') }}">
+    <!--  Favicon -->
+    <link rel="icon" href="{{ asset('customer/img/favicon/favicon.png') }}" type="image/png">
     <!-- Fonts -->
     <link href="{{ asset('customer/fonts.googleapis.com/index.html') }}" rel="preconnect">
     <link href="{{ asset('customer/fonts.googleapis.com/css2485a.css') }}" rel="stylesheet">
@@ -50,16 +44,9 @@
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-          <!-- ajax Spinner js code -->
-    <script>
-        window.addEventListener('load', function() {
-            const spinner = document.getElementById('page-load-spinner');
-            if (spinner) {
-                spinner.classList.add('hide');
-                setTimeout(() => spinner.remove(), 500); 
-            }
-        });
-    </script>
+            
+    <!-- ajax Spinner js code -->
+    <script src="{{ asset('customer/js/spinner.js') }}"></script>
     <!-- Vendor JS Files -->
     <script src="{{ asset('customer/vendors/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('customer/vendors/php-email-form/validate.js') }}"></script>

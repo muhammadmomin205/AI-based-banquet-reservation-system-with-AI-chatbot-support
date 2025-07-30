@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('banquets', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('manager_id')->unique();
-            $table->unsignedBigInteger('images_id')->unique()->nullable();
             $table->string('name');
             $table->string('address');
             $table->text('description')->nullable();
@@ -36,7 +35,6 @@ return new class extends Migration
             $table->string('security_personnel')->nullable();
             $table->enum('status', ['active', 'inactive', 'maintenance', 'pending', 'approved', 'rejected'])->default('pending');
             $table->foreign('manager_id')->references('id')->on('banquet_managers')->onDelete('cascade');
-            $table->foreign('images_id')->references('id')->on('banquet_images')->onDelete('set null');
             $table->timestamps();
         });
     }
