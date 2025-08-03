@@ -22,4 +22,8 @@ class Customer extends  Authenticatable implements CanResetPassword
     protected $hidden = [
         'password',
     ];
+    public function banquetBookings()
+    {
+        return $this->belongsToMany(BanquetBooking::class, 'customer_banquet_booking', 'customer_id', 'banquet_booking_id');
+    }
 }

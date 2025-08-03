@@ -4068,6 +4068,7 @@ section,
 # Travel Tour Details Section
 --------------------------------------------------------------*/
 .travel-tour-details .tour-hero {
+  margin-top: 50px;
   margin-bottom: 60px;
 }
 

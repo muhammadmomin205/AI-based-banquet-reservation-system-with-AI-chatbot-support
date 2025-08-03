@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\customer\Banquet;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Rules\AdvanceNotGreaterThanRental;
 
 class BanquetDetailController extends Controller
 {
@@ -15,10 +16,18 @@ class BanquetDetailController extends Controller
     }
     public function saveDetails(Request $request)
     {
+        $discount = $request->discount ?? 0;
+        $rentalRate = $request->rental_rate;
+
+        // Calculate discounted price
+        $finalPrice = ($discount > 0)
+            ? $rentalRate - ($rentalRate * $discount / 100)
+            : $rentalRate;
+            
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'address' => 'required|string|max:255',
-            'description' => 'required|string |max:510',
+            'description' => 'required|string',
             'guest_capacity' => 'required|integer|min:1',
             'facebook' => 'nullable|url',
             'instagram' => 'nullable|url',
@@ -26,7 +35,12 @@ class BanquetDetailController extends Controller
             'opening_time' => 'required',
             'closing_time' => 'required',
             'rental_rate' => 'required|numeric',
-            'advance_amount' => 'required|numeric',
+            'discount' => 'nullable|numeric',
+            'advance_amount' => [
+                'required',
+                'numeric',
+                new AdvanceNotGreaterThanRental($finalPrice),
+            ],
         ]);
 
         $socialMediaLinks = [

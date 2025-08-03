@@ -38,36 +38,31 @@
                 <div class="collapse" id="sidebarInvoice">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
-                            <a href="{{route('manager.banquet-images')}}" class="side-nav-link">
+                            <a href="{{ route('manager.banquet-images') }}" class="side-nav-link">
                                 <span class="menu-text">Set Images</span>
                             </a>
                         </li>
                         <li class="side-nav-item">
-                            <a href="{{route('manager.add-details')}}" class="side-nav-link">
+                            <a href="{{ route('manager.add-details') }}" class="side-nav-link">
                                 <span class="menu-text">Add Details</span>
-                            </a>
-                        </li>
-                        <li class="side-nav-item">
-                            <a href="apps-invoice-create.html" class="side-nav-link">
-                                <span class="menu-text">Create Invoice</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </li>
-
+            <li class="side-nav-title">Banquet Dates</li>
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarPages" aria-expanded="false" aria-controls="sidebarPages"
                     class="side-nav-link">
-                    <span class="menu-icon"><i class="ti ti-files"></i></span>
-                    <span class="menu-text"> Pages </span>
+                    <span class="menu-icon"><i class="ti ti-calendar"></i></span>
+                    <span class="menu-text">Banquet Availability</span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="sidebarPages">
                     <ul class="sub-menu">
                         <li class="side-nav-item">
                             <a href="pages-starter.html" class="side-nav-link">
-                                <span class="menu-text">Starter Page</span>
+                                <span class="menu-text"></span>
                             </a>
                         </li>
                         <li class="side-nav-item">

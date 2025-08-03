@@ -22,10 +22,10 @@
         </div><!-- End Section Title -->
 
         <div class="container" data-aos="fade-up" data-aos-delay="100">
-            @foreach ($banquets as $manager)
-                <div class="row gy-4">
+            <div class="row gy-4">
+                @foreach ($banquets as $manager)
                     <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="tour-card">
+                        <div class="tour-card" data-id="{{ $manager->banquet->id }}">
                             <div class="tour-image">
                                 <img src="{{ asset('manager/images/banquet_images/' . $manager->banquet->images->profile_image) }}"
                                     alt="Serene Beach Retreat" class="img-fluid" loading="lazy">
@@ -59,7 +59,7 @@
 
                                 </div>
                                 <div class="tour-action">
-                                    <a href="booking.html" class="btn-book">See Details</a>
+                                    <a href="{{url('/customer/banquets-details/'.$manager->banquet->id )}}" class="btn-book">See Details</a>
                                     <div class="tour-rating">
                                         <i class="bi bi-star-fill"></i>
                                         <i class="bi bi-star-fill"></i>
@@ -72,11 +72,19 @@
                             </div>
                         </div>
                     </div><!-- End Tour Item -->
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
 
     </section><!-- /Featured Tours Section -->
 @endsection
 @section('js')
+    <script>
+        $(document).ready(function() {
+            $('.tour-card').on('click', function() {
+                let banquetId = $(this).data('id');
+                window.location.href = `/customer/banquets-details/${banquetId}`;
+            });
+        });
+    </script>
 @endsection

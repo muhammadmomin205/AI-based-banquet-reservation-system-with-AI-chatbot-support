@@ -27,15 +27,17 @@
                             <!-- Banquet Name -->
                             <div class="mb-3">
                                 <label class="form-label">Banquet Name</label>
-                                <input type="text" readonly name="name" value="{{Auth::guard('banquet_manager')->user()->banquet_name}}" class="form-control"
+                                <input type="text" readonly name="name"
+                                    value="{{ Auth::guard('banquet_manager')->user()->banquet_name }}" class="form-control"
                                     placeholder="Enter the official banquet name">
                             </div>
 
                             <!-- Address -->
                             <div class="mb-3">
                                 <label class="form-label">Banquet Address</label>
-                                <input type="text" readonly name="address" value="{{Auth::guard('banquet_manager')->user()->banquet_address}}" class="form-control"
-                                    placeholder="e.g., Banquet No. 25, Block-B, Latifabad, Hyderabad">
+                                <input type="text" readonly name="address"
+                                    value="{{ Auth::guard('banquet_manager')->user()->banquet_address }}"
+                                    class="form-control" placeholder="e.g., Banquet No. 25, Block-B, Latifabad, Hyderabad">
                             </div>
 
                             <!-- Description -->
@@ -87,16 +89,32 @@
                                 </div>
                             </div>
 
-                            <!-- Rates -->
+                            <!-- Rental Rate -->
                             <div class="mb-3">
                                 <label class="form-label">Rental Rate (PKR)</label>
-                                <input type="text" name="rental_rate" class="form-control" placeholder="e.g., 80000">
+                                <input type="number" name="rental_rate" id="rentalRate" class="form-control"
+                                    placeholder="e.g., 80000">
                             </div>
+
+                            <!-- Discount Dropdown -->
+                            <div class="mb-3">
+                                <label class="form-label">Discount on Rental Rate</label>
+                                <select class="form-select form-select-sm" name="discount" id="discountSelect">
+                                    <option value="0">No Discount</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-2">
+                                <label class="form-label">Final Price After Discount:</label>
+                                <input type="text" class="form-control" name="final_price" id="finalPrice" readonly>
+                            </div>
+
 
                             <!-- Advance -->
                             <div class="mb-3">
                                 <label class="form-label">Advance Payment (PKR)</label>
-                                <input type="text" name="advance_amount" class="form-control" placeholder="e.g., 30000">
+                                <input type="text" name="advance_amount" class="form-control"
+                                    placeholder="e.g., 30000">
                             </div>
 
                             <!-- Other Features -->
@@ -105,8 +123,8 @@
                                 <div class="row">
                                     <div class="col-md-3">
                                         <label class="form-label d-block">Parking Available</label>
-                                        <input type="checkbox" id="parking_switch" name="parking_available" value="1"
-                                            data-switch="success">
+                                        <input type="checkbox" id="parking_switch" name="parking_available"
+                                            value="1" data-switch="success">
                                         <label for="parking_switch" data-on-label="Yes" data-off-label="No"></label>
                                     </div>
                                     <div class="col-md-3">
@@ -140,8 +158,8 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label class="form-label d-block">Screen Available</label>
-                                        <input type="checkbox" id="screen_switch" name="screen_available"
-                                            value="1" data-switch="success">
+                                        <input type="checkbox" id="screen_switch" name="screen_available" value="1"
+                                            data-switch="success">
                                         <label for="screen_switch" data-on-label="Yes" data-off-label="No"></label>
                                     </div>
                                     <div class="col-md-3">
@@ -185,7 +203,53 @@
 
 @section('js')
     <script>
+        function updateFinalPrice() {
+            var rental = parseFloat($('input[name="rental_rate"]').val()) || 0;
+            var discount = parseFloat($('select[name="discount"]').val()) || 0;
+
+            var finalPrice = rental - (rental * discount / 100);
+            $('#finalPrice').val(finalPrice.toFixed(2));
+        }
         $(document).ready(function() {
+            $('input[name="rental_rate"], select[name="discount"]').on('input', updateFinalPrice);
+
+            // Initialize on page load
+            updateFinalPrice();
+
+            $('#rentalRate').on('input', function() {
+                var rentalRate = parseFloat($(this).val());
+                var $discountSelect = $('#discountSelect');
+
+                // Clear previous options
+                $discountSelect.html('<option value="0">No Discount</option>');
+
+                if (!isNaN(rentalRate) && rentalRate > 0) {
+                    for (var percent = 5; percent <= 50; percent += 5) {
+                        var discountAmount = Math.round(rentalRate * (percent / 100));
+                        var formattedAmount = discountAmount.toLocaleString();
+                        var optionText = percent + '% (' + formattedAmount + ' PKR)';
+                        $discountSelect.append(
+                            $('<option>', {
+                                value: percent,
+                                text: optionText
+                            })
+                        );
+                    }
+                }
+            });
+            $('#rentalRate, #discountSelect').on('input change', function() {
+                var rentalRate = parseFloat($('#rentalRate').val());
+                var discount = parseFloat($('#discountSelect').val());
+                var $finalPrice = $('#finalPrice');
+
+                if (!isNaN(rentalRate) && rentalRate > 0 && !isNaN(discount) && discount > 0) {
+                    var final = rentalRate - (rentalRate * discount / 100);
+                    $finalPrice.val(final.toLocaleString() + ' PKR');
+                } else {
+                    $finalPrice.val(''); // Clear if invalid or empty
+                }
+            });
+
             $('form').on('submit', function(e) {
                 e.preventDefault();
 
@@ -209,6 +273,8 @@
                             successModal.show();
 
                             $('form')[0].reset();
+                        } else if (response.data) {
+                            console.log(response.data);
                         }
                         form.trigger("reset");
                     },

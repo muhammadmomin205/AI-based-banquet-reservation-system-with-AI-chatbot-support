@@ -22,6 +22,7 @@ return new class extends Migration
             $table->time('opening_time')->nullable();
             $table->time('closing_time')->nullable();
             $table->decimal('rental_rate', 10, 2)->nullable();
+            $table->integer('discount')->nullable();
             $table->decimal('advance_amount', 10, 2)->nullable();
             $table->string('parking_available')->nullable();
             $table->string('personal_caterer_available')->nullable();

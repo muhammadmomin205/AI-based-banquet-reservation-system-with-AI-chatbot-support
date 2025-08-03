@@ -6,12 +6,12 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $pageTitle . ' Page' ?? 'BanquetHub' }}</title>
+    <title>{{ $pageTitle?? 'BanquetHub' }}</title>
     
     <!-- ajax Spinner css code -->
     <link rel="stylesheet" href="{{asset('manager/css/spinner.css')}}"><link>
     <!--  Favicon -->
-    <link rel="icon" href="{{ asset('manager/imges/favicon/favicon.png') }}" type="image/png">
+    <link rel="icon" href="{{ asset('manager/images/favicon/favicon.png') }}" type="image/png">
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 

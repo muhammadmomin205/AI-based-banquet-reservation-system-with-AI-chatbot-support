@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $pageTitle . ' Page' ?? 'BanquetHub' }}</title>
+    <title>{{ $pageTitle?? 'BanquetHub' }}</title>
 
     <!-- ajax Spinner css code -->
     <link rel="stylesheet" href="{{ asset('customer/css/spinner.css') }}">
