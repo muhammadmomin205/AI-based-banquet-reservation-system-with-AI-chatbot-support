@@ -6,10 +6,14 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ $pageTitle?? 'BanquetHub' }}</title>
+    <title>{{ $pageTitle ?? 'BanquetHub' }}</title>
 
     <!-- ajax Spinner css code -->
     <link rel="stylesheet" href="{{ asset('customer/css/spinner.css') }}">
+    <!--  Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <!--  Favicon -->
     <link rel="icon" href="{{ asset('customer/img/favicon/favicon.png') }}" type="image/png">
     <!-- Fonts -->
@@ -44,7 +48,7 @@
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
-            
+
     <!-- ajax Spinner js code -->
     <script src="{{ asset('customer/js/spinner.js') }}"></script>
     <!-- Vendor JS Files -->

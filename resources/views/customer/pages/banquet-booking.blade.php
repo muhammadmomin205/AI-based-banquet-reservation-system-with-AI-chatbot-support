@@ -32,6 +32,7 @@
                                     <h4>Customer and Banquet Information</h4>
                                     <div class="traveler-info">
                                         <div class="row gy-3">
+                                            <input type="hidden" name="banquet_id" value="{{$manager->banquet->id}}">
                                             <div class="col-md-6">
                                                 <label>Name</label>
                                                 <input type="text" name="name" readonly
@@ -62,9 +63,11 @@
                                                 <label>Event Time</label>
                                                 <select name="event_time" id="event-time" class="form-select">
                                                     <option value="">Select Time</option>
-                                                    <option value="Day (1 PM - 5 PM)">Day (1 PM - 5 PM)</option>
-                                                    <option value="Night (9 PM - 1 AM)">Night (9 PM - 1 AM)</option>
+                                                    @foreach ($slots as $slot)
+                                                        <option value="{{ $slot }}">{{ $slot }}</option>
+                                                    @endforeach
                                                 </select>
+
                                             </div>
 
                                             <div class="special-requirements">
@@ -249,27 +252,25 @@
                     success: function(response) {
                         if (response.status == 'success') {
                             $('#ajax-spinner').addClass('d-none');
-                            form[0].reset(); 
+                            form[0].reset();
                             toastr.success(response.message);
                         }
                     },
                     error: function(xhr) {
                         $('#ajax-spinner').addClass('d-none');
-                        const {
-                            status,
-                            responseJSON
-                        } = xhr;
-                        const showError = msg => toastr.error(msg);
+                        if (xhr.status === 422 && xhr.responseJSON.errors) {
+                            let errors = xhr.responseJSON.errors;
+                            let errorMessages = '';
 
-                        if (status === 422) {
-                            const errors = responseJSON.errors;
-                            const messages = Object.values(errors).map(msg => `• ${msg[0]}`)
-                                .join('<br>');
-                            showError(messages);
-                        } else {
-                            showError('Check your Network Connection');
+                            $.each(errors, function(key, value) {
+                                errorMessages += `• ${value[0]}<br>`;
+                            });
+                            toastr.error(errorMessages);
+                        } else if (xhr.status === 422 && xhr.responseJSON.status == 'error') {
+                            toastr.error(xhr.responseJSON.message);
                         }
                     }
+
                 });
             });
         });

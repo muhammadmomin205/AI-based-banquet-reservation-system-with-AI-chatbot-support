@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('banquet_bookings', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('banquet_id');
-            $table->string('booking_id')->unique();
             $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('address');
-            $table->date('event_date');
-            $table->string('event_time');
-            $table->text('special_requirements')->nullable();
+            $table->string('email')->nullable();
+            $table->integer('rating');
+            $table->text('review');
+            $table->integer('helpful_count')->default(0);
+            $table->integer('unhelpful_count')->default(0);
             $table->foreign('banquet_id')->references('id')->on('banquets')->onDelete('cascade');
             $table->timestamps();
         });
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('banquet_bookings');
+        Schema::dropIfExists('reviews');
     }
 };

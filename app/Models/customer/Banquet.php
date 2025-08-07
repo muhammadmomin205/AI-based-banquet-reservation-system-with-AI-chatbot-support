@@ -9,13 +9,21 @@ class Banquet extends Model
 {
     public $table = 'banquets';
     protected $guarded = [];
-    
+
     public function images()
     {
-        return $this->hasOne(BanquetImage::class , 'banquet_id');
+        return $this->hasOne(BanquetImage::class, 'banquet_id');
     }
     public function banquet_manager()
     {
         return $this->belongsTo(BanquetManager::class);
+    }
+    public function banquet_booking()
+    {
+        return $this->hasOne(BanquetBooking::class, 'banquet_id');
+    }
+    public function review()
+    {
+        return $this->hasOne(Review::class, 'banquet_id');
     }
 }

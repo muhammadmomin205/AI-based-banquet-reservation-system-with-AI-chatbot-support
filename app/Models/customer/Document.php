@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Document extends Model
 {
-    protected $table = 'documents'; 
+    protected $table = 'documents';
 
     protected $fillable = [
         'manager_id',
@@ -17,4 +17,8 @@ class Document extends Model
         'cnic_back',
         'live_selfie',
     ];
+    public function banquet_manager()
+    {
+        return $this->belongsTo(BanquetManager::class);
+    }
 }
